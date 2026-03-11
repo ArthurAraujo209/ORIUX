@@ -8841,7 +8841,7 @@
                           }),
                           (0, e.jsx)("span", {
                             className: "text-xl text-[#e9eeff]",
-                            children: "Sao Paulo, BR",
+                            children: "Paraiba, BR",
                           }),
                         ],
                       }),
@@ -8923,7 +8923,7 @@
                           "Twitter",
                           "Instagram",
                           "LinkedIn",
-                          "Dribbble",
+                          
                         ].map((t) =>
                           (0, e.jsx)(
                             "li",

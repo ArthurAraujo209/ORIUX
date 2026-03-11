@@ -1843,7 +1843,7 @@
       },
       {
         quote:
-          "Trabalhar com a ORIUX foi transformador. Eles ultrapassaram limites que nem sabiamos que existiam no desenvolvimento web.",
+          "Decidimos apostar na Oriux pela integridade e pelo esforço que eles colocam em cada detalhe. O trabalho entregue foi extremamente qualificado, alinhando-se perfeitamente aos valores que desejamos somar ao nosso negócio.",
         author: "Rogério Passos",
         role: "CEO, Studio kings",
         company: "Studio kings",
