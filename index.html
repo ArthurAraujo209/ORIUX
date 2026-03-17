@@ -924,6 +924,350 @@
       });
     });
   </script>
+
+<script>
+(function() {
+  const LANG_KEY = 'site_lang';
+  
+  // Dicionário PT → EN (com todos os textos do site)
+  const dict = {
+    // NAVEGAÇÃO
+    "Sobre": "About",
+    "Servicos": "Services",
+    "Trabalhos": "Projects",
+    "Processo": "Process",
+    "Clientes": "Clients",
+    "Fale Conosco": "Contact Us",
+    
+    // HERO
+    "Estudio de Desenvolvimento Web Criativo": "Creative Web Development Studio",
+    "Criamos experiencias digitais imersivas que transcendem o comum. Onde codigo encontra arte.": "We create immersive digital experiences that transcend the ordinary. Where code meets art.",
+    "Role para explorar": "Scroll to explore",
+    
+    // ABOUT
+    "[ Sobre Nos ]": "[ About Us ]",
+    "NaORIUX,acreditamosqueumsitedevesermaisdoqueapenasumapáginanainternet.": "At ORIUX, we believe that a website should be more than just a page on the internet.",
+    "Criamos experiências digitais modernas que elevam o nível da sua marca, aumentam sua credibilidade e fazem seu negócio parecer muito mais profissional.": "We create modern digital experiences that elevate your brand, increase credibility, and make your business look far more professional.",
+    "Combinamos design, desenvolvimento e animações avançadas para entregar sites que realmente se destacam da concorrência.": "We combine design, development and advanced animations to deliver websites that truly stand out from the competition.",
+    
+    // STATS
+    "23": "23",
+    "Projetos Entregues": "Delivered Projects",
+    "3": "3",
+    "Certificações": "Certifications",
+    "Anos de Experiencia": "Years of Experience",
+    "Parcerias fechadas": "Partnerships",
+    
+    // SERVICES
+    "[ Servicos ]": "[ Services ]",
+    "O que fazemos": "What we do",
+    "Especializamos em criar experiencias digitais que quebram barreiras e desafiam convencões.": "We specialize in creating digital experiences that break barriers and challenge conventions.",
+    
+    // SERVICE 1
+    "01": "01",
+    "Websites Profissionais": "Professional Websites",
+    "Sites modernos, rápidos e responsivos que elevam a imagem da sua empresa.": "Modern, fast and responsive websites that elevate your company's image.",
+    "Site": "Website",
+    "Estrategia UX": "UX Strategy",
+    "Crescimento de Marca": "Brand Growth",
+    
+    // SERVICE 2
+    "02": "02",
+    "Animações e Experiências Interativas": "Animations and Interactive Experiences",
+    "Interfaces animadas e interações que tornam seu site memorável.": "Animated interfaces and interactions that make your website memorable.",
+    "UI/UX Design": "UI/UX Design",
+    "Motion Design": "Motion Design",
+    "Animação": "Animation",
+    
+    // SERVICE 3
+    "03": "03",
+    "Design Estratégico": "Strategic Design",
+    "Cada detalhe é pensado para transmitir profissionalismo e gerar confiança.": "Every detail is designed to convey professionalism and build trust.",
+    "Profissionalismo": "Professionalism",
+    "Marca": "Brand",
+    "Cuidado": "Care",
+    
+    // SERVICE 4
+    "04": "04",
+    "Performance e Otimização": "Performance and Optimization",
+    "Sites rápidos, leves e preparados para oferecer a melhor experiência.": "Fast, lightweight websites ready to offer the best experience.",
+    "Performance": "Performance",
+    "Boas práticas": "Best practices",
+    "Cuidado com usuário": "User care",
+    
+    // SELECTED WORKS
+    "[ Trabalhos Selecionados ]": "[ Selected Works ]",
+    "Projetos que": "Projects that ",
+    "definem": "define",
+    "nosso trabalho": "our work",
+    
+    // PROJECT 1
+    "Hospedagem tecnológica": "Technological Lodging",
+    "Oca da Serra": "Oca da Serra",
+    "Um sistema feito com cuidado para um empreendimento de hospedagens": "A system carefully made for a lodging enterprise",
+    "Ano": "Year",
+    "2025": "2025",
+    
+    // PROJECT 2
+    "Studio de arte criativa": "Creative Art Studio",
+    "Digital Kings": "Digital Kings",
+    "Website animado feito desenvolvido para mostrar os melhores feitos da empresa": "Animated website developed to showcase the company's best achievements",
+    "2026": "2026",
+    
+    // PROJECT 3
+    "Cardápio Digital": "Digital Menu",
+    "Torra Café Bistrô": "Torra Café Bistrô",
+    "Um cardápio digital para melhor visualização tecnológica dos seus produtos": "A digital menu for better technological visualization of your products",
+    "2024": "2024",
+    
+    // PROJECT 4
+    "Site institucional": "Institutional Website",
+    "DusolAgro": "DusolAgro",
+    "Um site feito sob medida para uma empresa do agronegócio": "A custom-made website for an agribusiness company",
+    
+    "Ver Todos os Projetos": "View All Projects",
+    
+    // PROCESS
+    "[ Nosso Processo ]": "[ Our Process ]",
+    "Da": "From",
+    "visao": "vision",
+    "a": "to",
+    "realidade": "reality",
+    "Descoberta": "Discovery",
+    "Entender": "Understand",
+    "Mergulhamos no seu mundo. Pesquisa, entrevistas e imersao profunda na sua visao.": "We dive into your world. Research, interviews and deep immersion in your vision.",
+    "Ideacao": "Ideation",
+    "Conceituar": "Conceptualize",
+    "Ideias ganham forma atraves de wireframes, moodboards e exploracao criativa.": "Ideas take shape through wireframes, mood boards and creative exploration.",
+    "Design": "Design",
+    "Visualizar": "Visualize",
+    "Designs de alta fidelidade que dao vida a visao com atencao meticulosa aos detalhes.": "High-fidelity designs that bring the vision to life with meticulous attention to detail.",
+    "Desenvolvimento": "Development",
+    "Construir": "Build",
+    "Codigo limpo, animacoes suaves e implementacao pixel-perfect.": "Clean code, smooth animations and pixel-perfect implementation.",
+    "Lancamento": "Launch",
+    "Entregar": "Deliver",
+    "Testes, otimizacao e um lancamento impecavel no mundo digital.": "Testing, optimization and a flawless launch into the digital world.",
+    
+    // TESTIMONIAL
+    "[ O que dizem ]": "[ What they say ]",
+    "A ORIUX nao construiu apenas um site para nos. Eles criaram uma experiencia que transformou fundamentalmente como nossos clientes percebem nossa marca.": "ORIUX didn't just build a website for us. They created an experience that fundamentally transformed how our clients perceive our brand.",
+    "A": "A",
+    "Acácia Silva": "Acacia Silva",
+    "CEO, Torra café Bistrô": "CEO, Torra café Bistrô",
+    
+    "Quando escolhemos a ORIUX para essa parceria foi pela coerência, dedicação e profissionalismo. Foi super profissional, e era exatamente o que buscávamos para agregar a nossa empresa.": "When we chose ORIUX for this partnership, it was because of their coherence, dedication, and professionalism. It was super professional, and it was exactly what we were looking for to add to our company.",
+    "A": "A",
+    "Thaísa Carvalho": "Thaísa Carvalho",
+    "CEO, Oca da Serra": "CEO, Oca da Serra",
+
+
+    "Decidimos apostar na Oriux pela integridade e pelo esforço que eles colocam em cada detalhe. O trabalho entregue foi extremamente qualificado, alinhando-se perfeitamente aos valores que desejamos somar ao nosso negócio.": "We decided to bet on Oriux for their integrity and the effort they put into every detail. The work delivered was extremely qualified, perfectly aligning with the values we want to add to our business.",
+    "R": "R",
+    "Rogério Passos": "Rogério Passos",
+    "CEO, Studio kings": "CEO, Studio kings",
+
+    // CTA
+    "[ Vamos Criar Juntos ]": "[ Let's Create Together ]",
+    "Pronto para": "Ready to",
+    "transformar?": "transform?",
+    "Iniciar Projeto": "Start Project",
+    "ou envie um email para": "or send an email to",
+    
+    // FOOTER
+    "O": "O",
+    "ORIUX": "ORIUX",
+    "Estudio Criativo": "Creative Studio",
+    "Hora Local": "Local Time",
+    "18:41": "18:41",
+    "Localizado em": "Located in",
+    "Paraiba, BR": "Paraiba, BR",
+    "Navegacao": "Navigation",
+    "Estrategia": "Strategy",
+    "Motion": "Motion",
+    "Social": "Social",
+    "Twitter": "Twitter",
+    "Instagram": "Instagram",
+    "LinkedIn": "LinkedIn",
+    "Contato": "Contact",
+    "+55 83 996607709": "+55 83 996607709",
+    "© 2026 ORIUX. Todos os direitos reservados.": "© 2026 ORIUX. All rights reserved.",
+    "Politica de Privacidade": "Privacy Policy",
+    "Termos de Uso": "Terms of Use"
+  };
+
+  // Armazena textos originais
+  function saveOriginalTexts() {
+    // Elementos principais
+    const elements = document.querySelectorAll('h1, h2, h3, h4, p, span, a, .label, .display-lg, .display-md, .body-lg, .stat-number, button, .project-meta span, .project-title');
+    
+    elements.forEach(el => {
+      if (!el.hasAttribute('data-original') && el.childNodes.length === 1 && el.childNodes[0].nodeType === 3) {
+        el.setAttribute('data-original', el.innerText);
+      }
+    });
+    
+    // Nós de texto
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode: function(node) {
+          if (node.parentElement.tagName === 'SCRIPT' || node.parentElement.tagName === 'STYLE') {
+            return NodeFilter.FILTER_REJECT;
+          }
+          if (node.nodeValue.trim() === '') {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
+
+    const textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+    
+    textNodes.forEach(node => {
+      const parent = node.parentElement;
+      if (parent && !parent.hasAttribute('data-original')) {
+        parent.setAttribute('data-original', node.nodeValue);
+      }
+    });
+  }
+
+  // Traduz um elemento específico
+  function translateElement(el, lang) {
+    if (lang === 'en') {
+      const original = el.getAttribute('data-original') || el.innerText;
+      const translation = dict[original.trim()];
+      if (translation && el.innerText !== translation) {
+        el.innerText = translation;
+      }
+    } else {
+      const original = el.getAttribute('data-original');
+      if (original && el.innerText !== original) {
+        el.innerText = original;
+      }
+    }
+  }
+
+  // Tradução principal
+  function translatePage(lang) {
+    // Elementos HTML comuns
+    const elements = document.querySelectorAll('h1, h2, h3, h4, p, span, a, .label, .display-lg, .display-md, .body-lg, .stat-number, button, .project-meta span, .project-title, blockquote');
+    
+    elements.forEach(el => {
+      if (el.childNodes.length === 1 && el.childNodes[0].nodeType === 3) {
+        translateElement(el, lang);
+      }
+    });
+    
+    // Nós de texto
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode: function(node) {
+          if (node.parentElement.tagName === 'SCRIPT' || node.parentElement.tagName === 'STYLE') {
+            return NodeFilter.FILTER_REJECT;
+          }
+          if (node.nodeValue.trim() === '') {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
+
+    const textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+    
+    textNodes.forEach(node => {
+      const parent = node.parentElement;
+      const original = parent.getAttribute('data-original') || node.nodeValue;
+      
+      if (lang === 'en') {
+        const translation = dict[original.trim()];
+        if (translation && node.nodeValue.trim() !== translation) {
+          node.nodeValue = translation;
+        }
+      } else {
+        const restored = parent.getAttribute('data-original');
+        if (restored && node.nodeValue !== restored) {
+          node.nodeValue = restored;
+        }
+      }
+    });
+
+    localStorage.setItem(LANG_KEY, lang);
+  }
+
+  // Observer para lidar com re-renders
+  let timeout = null;
+  const observer = new MutationObserver(() => {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      const lang = localStorage.getItem(LANG_KEY) || 'pt';
+      if (lang === 'en') {
+        translatePage('en');
+      }
+    }, 100);
+  });
+
+  // Botão flutuante
+  function createButton() {
+    const btn = document.createElement('button');
+    btn.id = 'lang-switcher';
+    btn.style.position = 'fixed';
+    btn.style.bottom = '20px';
+    btn.style.right = '20px';
+    btn.style.zIndex = '999999';
+    btn.style.padding = '12px 16px';
+    btn.style.background = '#0742e8';
+    btn.style.color = '#fff';
+    btn.style.border = 'none';
+    btn.style.borderRadius = '12px';
+    btn.style.cursor = 'pointer';
+    btn.style.fontWeight = 'bold';
+    btn.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+    btn.style.fontSize = '14px';
+
+    const currentLang = localStorage.getItem(LANG_KEY) || 'pt';
+    btn.innerText = currentLang === 'pt' ? 'PT' : 'EN';
+
+    btn.onclick = () => {
+      const current = localStorage.getItem(LANG_KEY) || 'pt';
+      const next = current === 'pt' ? 'en' : 'pt';
+      translatePage(next);
+      btn.innerText = next === 'pt' ? 'PT' : 'EN';
+    };
+
+    document.body.appendChild(btn);
+    return btn;
+  }
+
+  // Inicialização
+  function init() {
+    saveOriginalTexts();
+    createButton();
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+
+    const savedLang = localStorage.getItem(LANG_KEY) || 'pt';
+localStorage.setItem(LANG_KEY, 'pt');
+    if (savedLang === 'en') {
+      setTimeout(() => translatePage('en'), 200);
+    }
+  }
+
+  // Aguarda o DOM estar pronto
+ window.addEventListener('load', init);
+})();
+</script>
 </body>
 
 </html>
