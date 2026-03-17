@@ -1248,21 +1248,31 @@
 
   // Inicialização
   function init() {
-    saveOriginalTexts();
-    createButton();
-    
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      characterData: true
-    });
+  saveOriginalTexts();
 
-    const savedLang = localStorage.getItem(LANG_KEY) || 'pt';
-localStorage.setItem(LANG_KEY, 'pt');
-    if (savedLang === 'en') {
-      setTimeout(() => translatePage('en'), 200);
+  // tenta criar o botão várias vezes
+  let tries = 0;
+  const interval = setInterval(() => {
+    createButton();
+    tries++;
+
+    if (tries > 10) { // tenta por ~20s (10x * 2s)
+      clearInterval(interval);
     }
+  }, 2000);
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    characterData: true
+  });
+
+  const savedLang = localStorage.getItem(LANG_KEY) || 'pt';
+
+  if (savedLang === 'en') {
+    setTimeout(() => translatePage('en'), 500);
   }
+}
 
   // Aguarda o DOM estar pronto
  window.addEventListener('load', init);
